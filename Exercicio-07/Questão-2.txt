@@ -1,0 +1,36 @@
+>>> from core.models import Cliente
+>>> cliente = Cliente(cpf=14126849785, nome="Bruno Serra", endereco="Rua Jorge Cury, 510", complemento="Bairro Acarape", cidade="Teresina", estado="PI", cep="64003820", telefone=994676844, celular=994676844, renda=1000.00, email="brunoserrabr@gmail.com")
+>>> cliente.save()
+
+>>> from core.models import Venda
+>>> cliente = Cliente.objects.get(cpf="14126849785")
+>>> venda = Venda(valor=10.00, cliente=cliente)
+>>> venda.save()
+
+>>> from core.models import Produto
+>>> produto = Produto(codigo=1,  nome="Caderno", quantidade=1, minimo=1.50)
+>>> produto.save()
+
+>>> from core.models import Fornecedor
+>>> fornecedor = Fornecedor(cnpj=16447818000197, nome="Tilibra", endereco="Rua Jasmin, 2324", complemento="Bairro Horto Florestal", cidade="Teresina", estado="PI", cep="64052490", telefone=32325366, responsavel="Leonardo Tavares", website="disalpi.com.br")
+>>> fornecedor.save()
+
+>>> from core.models import Pedido
+>>> fornecedor = Fornecedor.objects.get(cnpj="16447818000197")
+>>> pedido = Pedido(codigo=1,  recebimento=“12-12-2016”, total=10, fornecedor=fornecedor)
+>>> pedido.save()
+
+>>> from core.models import ItemVenda
+>>> venda = Venda.objects.get(codigo="1")
+>>> produto = Produto.objects.get(codigo="1")
+>>> itemvenda = ItemVenda(venda=venda, produto=produto, preco="4.50", quantidade=10)
+>>> itemvenda.save()
+
+>>> from core.models import ItemPedido
+>>> pedido = Pedido.objects.get(codigo="1")
+>>> produto = Produto.objects.get(codigo="1")
+>>> itempedido = ItemPedido(pedido=pedido, produto=produto, preco="20.00", quantidade=20)
+>>> itempedido.save()
+
+
+
