@@ -1,0 +1,10 @@
+>>> Cliente.objects.all()
+
+>>> Venda.objects.filter(cliente_id=14126849785)
+
+>>> Pedido.objects.get(codigo=1)
+
+>>> ItemPedido.objects.filter(pedido_id=1)
+
+>>> from django.db.models import F
+>>> Produto.objects.filter(quantidade__lte=F('minimo'))
